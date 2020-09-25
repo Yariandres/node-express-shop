@@ -15,4 +15,4 @@ app.use((req, res, next) => {
 });
 
 const port = 5000;
-app.listen(port);
+app.listen(port, () => console.log(`Server running on port ${port}`));
