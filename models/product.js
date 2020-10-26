@@ -24,23 +24,19 @@ module.exports = class Product {
     this.imageUrl = imageUrl;
     this.description = description;
     this.price = price;
-
   }
 
-  save() {
-    
-    getProductsFromFile(products => {
-      
+  save() {    
+    getProductsFromFile(products => {      
       if (this.id) {
         const existingProductIndex = products.findIndex(prod => prod.id === this.id);
         const updatedProducts = [...products];
         updatedProducts[existingProductIndex] = this;
 
-        fs.writeFile(p, JSON.stringify(products), err => {
+        fs.writeFile(p, JSON.stringify(updatedProducts), err => {
           console.log(err);
         });
-      } else {
-        
+      } else {        
         this.id = Math.random().toString();
         products.push(this);
         fs.writeFile(p, JSON.stringify(products), err => {
@@ -49,6 +45,13 @@ module.exports = class Product {
       }
       
     });
+  }
+
+  static delete(id) {
+    getProductsFromFile(products => {
+      const productIndex = products.findIndex(prod => prod.id === id);
+      cb(product);
+    })
   }
 
   static fetchAll(cb) {
