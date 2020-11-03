@@ -11,8 +11,5 @@ const Order = sequelize.define('order', {
   }
 });
 
-<<<<<<< HEAD
 module.exports = Order;
-=======
-module.exports = Order;
->>>>>>> master
+
