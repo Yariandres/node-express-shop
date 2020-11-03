@@ -12,8 +12,5 @@ const OrderItem = sequelize.define('orderItem', {
   quantity: Sequelize.INTEGER
 });
 
-<<<<<<< HEAD
 module.exports = OrderItem;
-=======
-module.exports = OrderItem;
->>>>>>> master
+
