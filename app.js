@@ -77,7 +77,7 @@ sequelize
 
     })
     .then(cart => {
-        app.listen(3000);
+        app.listen(3000, () => console.log('Server is running') );
     })
     .catch(err => console.log(err))
 
