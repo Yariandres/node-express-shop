@@ -9,21 +9,19 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-  const title = req.body.title;
-  const imageUrl = req.body.imageUrl;
-  const price = req.body.price;
-  const description = req.body.description;
-  console.log(req.body);
-  req.user.createProduct({
-      title: title,
-      price: price,
-      imageUrl: imageUrl,
-      description: description
-    })
-    .then(result => {
-      console.log('Created Product')
-      res.redirect('/admin/products')
-    })
+    const title = req.body.title;
+    const imageUrl = req.body.imageUrl;
+    const price = req.body.price;
+    const description = req.body.description;
+
+    const product = new Product(title, price, description, imageUrl);
+    
+    product
+        .save()
+        .then(result => {
+            console.log('Created Product')
+            res.redirect('/admin/products')
+        });
 };
 
 // exports.getEditProduct = (req, res, next) => {
