@@ -13,7 +13,6 @@ const Order = require('./models/order');
 const OrderItem = require('./models/order-item');
 Order.belongsToMany(Product, { through: OrderItem });
 
-
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -26,7 +25,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-
     User
     .findByPk(1)
     .then(user => {
@@ -34,7 +32,6 @@ app.use((req, res, next) => {
         next();
     })
     .catch(err => console.log(err))
-
 });
 
 app.use('/admin', adminRoutes);
@@ -52,6 +49,7 @@ Order.belongsTo(User);
 User.hasMany(Order);
 Order.belongsToMany(Product, { through: OrderItem });
 
+const port = 8080;
 
 sequelize
     // .sync({ force: true })
@@ -77,7 +75,7 @@ sequelize
 
     })
     .then(cart => {
-        app.listen(3000, () => console.log('Server is running') );
+        app.listen(port, () => console.log('Server is running on port:', port) );
     })
     .catch(err => console.log(err))
 
