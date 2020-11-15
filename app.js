@@ -18,15 +18,14 @@ const shopRoutes = require('./routes/shop');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
+app.use((req, res, next) => {    
     User
-    .findById('5fb1a15f01dfb4081a38f37c')
-    .then(user => {
-        req.user = user;
-        next();
-    })
-    .catch(err => console.log(err))
-    next();
+        .findById('5fb1a15f01dfb4081a38f37c')
+        .then(user => {
+            req.user = user;
+            next();
+        })
+        .catch(err => console.log(err))
 });
 
 app.use('/admin', adminRoutes);
