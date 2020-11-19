@@ -1,6 +1,5 @@
 const mongodb = require('mongodb');
 const getDb = require('../util/database').getDb;
-
 const ObjectId = mongodb.ObjectId
 
 class User {
@@ -24,7 +23,6 @@ class User {
         const cartProductIndex = this.cart.items.findIndex(cp => {
             return cp.productId.toString() === product._id.toString();
         });
-
         let newQuantity = 1;
 
         const updatedCartItems = [...this.cart.items];
@@ -36,7 +34,6 @@ class User {
             updatedCartItems[cartProductIndex].quantity = newQuantity;
 
         } else {
-
             updatedCartItems.push({
                 productId: new ObjectId(product._id), 
                 quantity: newQuantity
